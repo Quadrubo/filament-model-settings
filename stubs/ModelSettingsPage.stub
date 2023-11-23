@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Forms;
+use Filament\Forms\Form;
+use Quadrubo\FilamentModelSettings\Pages\ModelSettingsPage;
+use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
+
+class {{ class }} extends ModelSettingsPage implements HasModelSettings
+{
+    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+
+    public static function getSettingRecord()
+    {
+        // return auth()->user();
+    }
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                // ...
+            ]);
+    }
+}
