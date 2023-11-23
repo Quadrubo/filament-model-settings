@@ -64,6 +64,10 @@ public function form(Form $form): Form
 composer test
 ```
 
+## Inspiration
+
+This package is heavily inspired by the official [Spatie Laravel Settings Plugin](https://github.com/filamentphp/spatie-laravel-settings-plugin) for filament and basically just implements a few changes to make it compatible with  [glorand/laravel-model-settings](https://github.com/glorand/laravel-model-settings).
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
