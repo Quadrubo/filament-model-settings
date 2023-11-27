@@ -58,6 +58,44 @@ public function form(Form $form): Form
 }
 ```
 
+### Using the Page in the user menu
+
+If you want to use this page in filaments user menu, you can create an entry in your panel provider.
+
+```php
+use App\Filament\Admin\Pages\ManagePreferences;
+
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->
+            ...
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Settings')
+                    ->url(fn (): string => ManagePreferences::getUrl())
+                    ->icon('heroicon-o-cog-6-tooth'),
+            ]);
+    }
+}
+```
+
+You may also want to hide the page in the sidebar.
+
+```php
+namespace App\Filament\Admin\Pages;
+
+class ManagePreferences extends ModelSettingsPage implements HasModelSettings
+{
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+}
+```
+
 ## Testing
 
 ```bash
