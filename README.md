@@ -23,7 +23,8 @@ php artisan vendor:publish --tag="filament-model-settings-views"
 
 ## Usage
 
-You should start by setting up your eloquent model. You should read the [Instructions](https://github.com/glorand/laravel-model-settings#update_models) of the `glorand/laravel-model-settings` to find out how to do this.
+You should start by setting up your eloquent model.  
+**Important:** You should read the [Instructions](https://github.com/glorand/laravel-model-settings#update_models) of the `glorand/laravel-model-settings` to find out how to do this.
 
 Then you can start by generating a settings page.
 
