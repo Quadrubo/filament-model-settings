@@ -70,6 +70,7 @@ class MakeModelSettingsPageCommand extends Command
 
         $path = (string) str($page)
             ->prepend('/')
+            /** @phpstan-ignore-next-line */
             ->prepend(($path ?? ''))
             ->replace('\\', '/')
             ->replace('//', '/')
@@ -81,6 +82,7 @@ class MakeModelSettingsPageCommand extends Command
 
         $this->copyStubToApp('ModelSettingsPage', $path, [
             'class' => $pageClass,
+            /** @phpstan-ignore-next-line */
             'namespace' => str($namespace ?? '') . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
         ]);
 

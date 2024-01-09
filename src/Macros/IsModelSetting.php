@@ -25,7 +25,13 @@ class IsModelSetting
                 }
 
                 if ($state === null && $component->getRecord() !== null) {
-                    $component->state($component->getRecord()->settings()->get($statePath));
+                    $record = $component->getRecord();
+
+                    if (! method_exists($record, 'settings')) {
+                        return;
+                    }
+
+                    $component->state($record->settings()->get($statePath));
                 }
             });
 

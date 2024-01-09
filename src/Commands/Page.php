@@ -219,6 +219,7 @@ class MakePageCommand extends Command
 
         $path = (string) str($page)
             ->prepend('/')
+            /** @phpstan-ignore-next-line */
             ->prepend(empty($resource) ? ($path ?? '') : ($resourcePath ?? '') . "\\{$resource}\\Pages\\")
             ->replace('\\', '/')
             ->replace('//', '/')
@@ -243,6 +244,7 @@ class MakePageCommand extends Command
         if (empty($resource)) {
             $this->copyStubToApp('Page', $path, [
                 'class' => $pageClass,
+                /** @phpstan-ignore-next-line */
                 'namespace' => str($namespace ?? '') . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
                 'view' => $view,
             ]);
@@ -251,9 +253,11 @@ class MakePageCommand extends Command
                 'baseResourcePage' => "Filament\\Resources\\Pages\\{$resourcePage}",
                 'baseResourcePageClass' => $resourcePage,
                 'modifyQueryUsing' => filled($modifyQueryUsing ?? null) ? PHP_EOL . $this->indentString($modifyQueryUsing ?? '', 3) : $modifyQueryUsing ?? '',
+                /** @phpstan-ignore-next-line */
                 'namespace' => ($resourceNamespace ?? '') . "\\{$resource}\\Pages" . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
                 'recordTitleAttribute' => $recordTitleAttribute ?? null,
                 'relationship' => $relationship ?? null,
+                /** @phpstan-ignore-next-line */
                 'resource' => ($resourceNamespace ?? '') . "\\{$resource}",
                 'resourceClass' => $resourceClass,
                 'resourcePageClass' => $pageClass,
@@ -271,7 +275,9 @@ class MakePageCommand extends Command
             $this->copyStubToApp($resourcePage === 'custom' ? 'CustomResourcePage' : 'ResourcePage', $path, [
                 'baseResourcePage' => 'Filament\\Resources\\Pages\\' . ($resourcePage === 'custom' ? 'Page' : $resourcePage),
                 'baseResourcePageClass' => $resourcePage === 'custom' ? 'Page' : $resourcePage,
+                /** @phpstan-ignore-next-line */
                 'namespace' => ($resourceNamespace ?? '') . "\\{$resource}\\Pages" . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
+                /** @phpstan-ignore-next-line */
                 'resource' => ($resourceNamespace ?? '') . "\\{$resource}",
                 'resourceClass' => $resourceClass,
                 'resourcePageClass' => $pageClass,
