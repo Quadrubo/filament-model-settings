@@ -26,6 +26,8 @@ php artisan vendor:publish --tag="filament-model-settings-views"
 You should start by setting up your eloquent model.  
 **Important:** You should read the [Instructions](https://github.com/glorand/laravel-model-settings#update_models) of the `glorand/laravel-model-settings` to find out how to do this.
 
+### Seperate Settings Page
+
 Then you can start by generating a settings page.
 
 ```bash
@@ -59,7 +61,7 @@ public function form(Form $form): Form
 }
 ```
 
-### Using the Page in the user menu
+#### Using the Page in the user menu
 
 If you want to use this page in filaments user menu, you can create an entry in your panel provider.
 
@@ -95,6 +97,54 @@ class ManagePreferences extends ModelSettingsPage implements HasModelSettings
         return false;
     }
 }
+```
+
+### Settings within your existing Resouce
+
+The settings can also be used in your existing resource.
+If, for example you have a school model with the settings `color` and `can_add_students`.
+
+```php
+namespace App\Models;
+
+use Glorand\Model\Settings\Traits\HasSettingsField;
+
+class School extends Model
+{
+    use HasSettingsField;
+
+    public $defaultSettings = [
+        'color' => '#ff0000',
+        'can_add_students' => true,
+    ];
+}
+```
+
+You can then use the provided macro `isModelSetting()` to use these settings inside your resource.
+
+```php
+namespace App\Filament\Resources;
+
+class SchoolResource extends Resource
+{
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Forms\Components\ColorPicker::make('settings.color_1')
+                    ->isModelSetting(),
+                Forms\Components\Toggle::make('settings.can_add_students')
+                    ->isModelSetting(),
+            ]);
+    }
+}
+```
+
+In case you changed your column name for the settings, you should provide that to `isModelSetting` as a prefix.
+
+```php
+Forms\Components\Toggle::make('school_stuff.can_add_students')
+    ->isModelSetting('school_stuff'),
 ```
 
 ## Testing
