@@ -5,7 +5,7 @@ namespace Quadrubo\FilamentModelSettings\Macros;
 use Filament\Forms\Components\Field;
 
 /**
- * @param string $prefix
+ * @param  string  $prefix
  *
  * @mixin \Filament\Forms\Components\Field;
  *
