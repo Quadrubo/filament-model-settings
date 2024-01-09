@@ -2,6 +2,7 @@
 
 namespace Quadrubo\FilamentModelSettings;
 
+use Filament\Forms\Components\Field;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Quadrubo\FilamentModelSettings\Commands\MakeModelSettingsPageCommand;
@@ -44,6 +45,9 @@ class FilamentModelSettingsServiceProvider extends PackageServiceProvider
                 ], 'filament-model-settings-stubs');
             }
         }
+
+        // Macros
+        Field::macro('isModelSetting', app(\Quadrubo\FilamentModelSettings\Macros\IsModelSetting::class)());
 
         // Testing
         Testable::mixin(new TestsFilamentModelSettings());
