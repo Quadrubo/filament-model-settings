@@ -8,6 +8,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Concerns;
+use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
