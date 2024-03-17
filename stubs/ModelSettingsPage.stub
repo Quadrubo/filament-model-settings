@@ -2,14 +2,14 @@
 
 namespace {{ namespace }};
 
-use Filament\Forms;
+{{ clusterImport }}use Filament\Forms;
 use Filament\Forms\Form;
 use Quadrubo\FilamentModelSettings\Pages\ModelSettingsPage;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
 
 class {{ class }} extends ModelSettingsPage implements HasModelSettings
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';{{ clusterAssignment }}
 
     public static function getSettingRecord()
     {
