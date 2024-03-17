@@ -8,13 +8,12 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Concerns;
+use Filament\Pages\Concerns\CanUseDatabaseTransactions;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
-use Illuminate\Support\Facades\DB;
 use Throwable;
-use Filament\Pages\Concerns\CanUseDatabaseTransactions;
 
 class ModelSettingsPage extends Page implements HasForms
 {
@@ -87,7 +86,7 @@ class ModelSettingsPage extends Page implements HasForms
             $this->callHook('afterSave');
 
             $this->commitDatabaseTransaction();
-        }  catch (Halt $exception) {
+        } catch (Halt $exception) {
             $exception->shouldRollbackDatabaseTransaction() ?
                 $this->rollBackDatabaseTransaction() :
                 $this->commitDatabaseTransaction();
