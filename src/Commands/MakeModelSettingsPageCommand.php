@@ -2,13 +2,13 @@
 
 namespace Quadrubo\FilamentModelSettings\Commands;
 
+use Filament\Clusters\Cluster;
 use Filament\Facades\Filament;
 use Filament\Panel;
+use Filament\Support\Commands\Concerns\CanIndentStrings;
 use Filament\Support\Commands\Concerns\CanManipulateFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
-use Filament\Clusters\Cluster;
-use Filament\Support\Commands\Concerns\CanIndentStrings;
 
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
