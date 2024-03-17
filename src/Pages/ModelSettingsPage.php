@@ -11,8 +11,6 @@ use Filament\Pages\Concerns;
 use Filament\Support\Exceptions\Halt;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
-use Illuminate\Support\Facades\DB;
-use Filament\Pages\Concerns\CanUseDatabaseTransactions;
 
 class ModelSettingsPage extends Page implements HasForms
 {
@@ -80,7 +78,7 @@ class ModelSettingsPage extends Page implements HasForms
             $settings->apply((array) $data);
 
             $this->callHook('afterSave');
-        }  catch (Halt $exception) {
+        } catch (Halt $exception) {
             return;
         }
 
