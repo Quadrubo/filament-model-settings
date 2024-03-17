@@ -12,9 +12,13 @@ use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
+use Illuminate\Support\Facades\DB;
+use Throwable;
+use Filament\Pages\Concerns\CanUseDatabaseTransactions;
 
 class ModelSettingsPage extends Page implements HasForms
 {
+    use CanUseDatabaseTransactions;
     use Concerns\InteractsWithFormActions;
 
     protected static string $view = 'filament-model-settings::pages.model-settings-page';
@@ -63,6 +67,8 @@ class ModelSettingsPage extends Page implements HasForms
         }
 
         try {
+            $this->beginDatabaseTransaction();
+
             $this->callHook('beforeValidate');
 
             /** @phpstan-ignore-next-line */
@@ -79,8 +85,18 @@ class ModelSettingsPage extends Page implements HasForms
             $settings->apply((array) $data);
 
             $this->callHook('afterSave');
-        } catch (Halt $exception) {
+
+            $this->commitDatabaseTransaction();
+        }  catch (Halt $exception) {
+            $exception->shouldRollbackDatabaseTransaction() ?
+                $this->rollBackDatabaseTransaction() :
+                $this->commitDatabaseTransaction();
+
             return;
+        } catch (Throwable $exception) {
+            $this->rollBackDatabaseTransaction();
+
+            throw $exception;
         }
 
         $this->getSavedNotification()?->send();

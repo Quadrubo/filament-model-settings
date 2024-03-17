@@ -7,12 +7,15 @@ use Filament\Panel;
 use Filament\Support\Commands\Concerns\CanManipulateFiles;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
+use Filament\Clusters\Cluster;
+use Filament\Support\Commands\Concerns\CanIndentStrings;
 
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
 class MakeModelSettingsPageCommand extends Command
 {
+    use CanIndentStrings;
     use CanManipulateFiles;
 
     protected $description = 'Create a new Filament model settings page class';
