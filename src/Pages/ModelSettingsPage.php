@@ -42,7 +42,7 @@ class ModelSettingsPage extends Page implements HasForms
         $data = $this->mutateFormDataBeforeFill($settings->all());
 
         /** @phpstan-ignore-next-line */
-        $this->form->fill($data);
+        $this->form->fill(blank($data) ? null : $data);
 
         $this->callHook('afterFill');
     }
