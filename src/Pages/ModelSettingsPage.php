@@ -32,7 +32,7 @@ class ModelSettingsPage extends Page implements HasForms
     protected function fillForm(): void
     {
         if (! $this instanceof HasModelSettings) {
-            throw new HasModelSettingsNotImplementedException();
+            throw new HasModelSettingsNotImplementedException;
         }
 
         $this->callHook('beforeFill');
@@ -59,7 +59,7 @@ class ModelSettingsPage extends Page implements HasForms
     public function save(): void
     {
         if (! $this instanceof HasModelSettings) {
-            throw new HasModelSettingsNotImplementedException();
+            throw new HasModelSettingsNotImplementedException;
         }
 
         try {

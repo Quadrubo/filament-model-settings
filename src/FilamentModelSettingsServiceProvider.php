@@ -50,7 +50,7 @@ class FilamentModelSettingsServiceProvider extends PackageServiceProvider
         Field::macro('isModelSetting', app(\Quadrubo\FilamentModelSettings\Macros\IsModelSetting::class)());
 
         // Testing
-        Testable::mixin(new TestsFilamentModelSettings());
+        Testable::mixin(new TestsFilamentModelSettings);
     }
 
     protected function getAssetPackageName(): ?string

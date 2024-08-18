@@ -2,6 +2,4 @@
 
 namespace Quadrubo\FilamentModelSettings;
 
-class FilamentModelSettings
-{
-}
+class FilamentModelSettings {}
