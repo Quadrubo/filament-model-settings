@@ -2,6 +2,20 @@
 
 All notable changes to `filament-model-settings` will be documented in this file.
 
+## v1.3.1 - 2024-08-19
+
+### What's Changed
+
+* chore(deps): bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Quadrubo/filament-model-settings/pull/11
+* chore(deps): bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/Quadrubo/filament-model-settings/pull/15
+* Fix fields default value by @mariomka in https://github.com/Quadrubo/filament-model-settings/pull/18
+
+### New Contributors
+
+* @mariomka made their first contribution in https://github.com/Quadrubo/filament-model-settings/pull/18
+
+**Full Changelog**: https://github.com/Quadrubo/filament-model-settings/compare/v1.3.0...v1.3.1
+
 ## v1.3.0 - 2024-03-17
 
 ### What's Changed
