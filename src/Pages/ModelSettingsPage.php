@@ -10,6 +10,7 @@ use Filament\Notifications\Notification;
 use Filament\Pages\Concerns;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
+use Glorand\Model\Settings\Contracts\SettingsManagerContract;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
 
@@ -74,9 +75,7 @@ class ModelSettingsPage extends Page implements HasForms
 
             $this->callHook('beforeSave');
 
-            $settings = $this->getSettingRecord()->settings();
-
-            $settings->apply((array) $data);
+            $this->handleRecordUpdate($this->getSettingRecord()->settings(), $data);
 
             $this->callHook('afterSave');
         } catch (Halt $exception) {
@@ -115,6 +114,14 @@ class ModelSettingsPage extends Page implements HasForms
     protected function mutateFormDataBeforeSave(array $data): array
     {
         return $data;
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    protected function handleRecordUpdate(SettingsManagerContract $settings, array $data): SettingsManagerContract
+    {
+        return $settings->apply((array) $data);
     }
 
     /**
