@@ -2,6 +2,18 @@
 
 All notable changes to `filament-model-settings` will be documented in this file.
 
+## v1.4.0 - 2025-04-17
+
+### What's Changed
+
+* feat: laravel 12 by @telkins in https://github.com/Quadrubo/filament-model-settings/pull/20
+
+### New Contributors
+
+* @telkins made their first contribution in https://github.com/Quadrubo/filament-model-settings/pull/20
+
+**Full Changelog**: https://github.com/Quadrubo/filament-model-settings/compare/v1.3.1...v1.4.0
+
 ## v1.3.1 - 2024-08-19
 
 ### What's Changed
