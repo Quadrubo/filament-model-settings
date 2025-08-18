@@ -3,22 +3,22 @@
 namespace {{ namespace }};
 
 {{ clusterImport }}use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Quadrubo\FilamentModelSettings\Pages\ModelSettingsPage;
 use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
 
 class {{ class }} extends ModelSettingsPage implements HasModelSettings
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';{{ clusterAssignment }}
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';{{ clusterAssignment }}
 
     public static function getSettingRecord()
     {
         // return auth()->user();
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return parent::form($schema)
             ->schema([
                 // ...
             ]);
