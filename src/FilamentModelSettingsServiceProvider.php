@@ -2,6 +2,10 @@
 
 namespace Quadrubo\FilamentModelSettings;
 
+use Filament\Infolists\Components\TextEntry;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\TextColumn;
+use Quadrubo\FilamentModelSettings\Macros\IsModelSetting;
 use Filament\Forms\Components\Field;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
@@ -47,7 +51,9 @@ class FilamentModelSettingsServiceProvider extends PackageServiceProvider
         }
 
         // Macros
-        Field::macro('isModelSetting', app(\Quadrubo\FilamentModelSettings\Macros\IsModelSetting::class)());
+        Field::macro('isModelSetting', app(IsModelSetting::class)->field());
+        TextColumn::macro('isModelSetting', app(IsModelSetting::class)->textColumn());
+        TextEntry::macro('isModelSetting', app(IsModelSetting::class)->textEntry());
 
         // Testing
         Testable::mixin(new TestsFilamentModelSettings);

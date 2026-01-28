@@ -5,10 +5,10 @@ namespace Quadrubo\FilamentModelSettings\Pages;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
-use Filament\Pages\Concerns;
+use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
 use Filament\Support\Exceptions\Halt;
 use Glorand\Model\Settings\Contracts\SettingsManagerContract;
 use Quadrubo\FilamentModelSettings\Exceptions\HasModelSettingsNotImplementedException;
@@ -16,9 +16,9 @@ use Quadrubo\FilamentModelSettings\Pages\Contracts\HasModelSettings;
 
 class ModelSettingsPage extends Page implements HasForms
 {
-    use Concerns\InteractsWithFormActions;
+    use InteractsWithFormActions;
 
-    protected static string $view = 'filament-model-settings::pages.model-settings-page';
+    protected string $view = 'filament-model-settings::pages.model-settings-page';
 
     /**
      * @var array<string, mixed> | null
@@ -147,24 +147,12 @@ class ModelSettingsPage extends Page implements HasForms
         return $this->getSaveFormAction();
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form;
-    }
-
-    /**
-     * @return array<int | string, string | Form>
-     */
-    protected function getForms(): array
-    {
-        return [
-            'form' => $this->form(
-                $this->makeForm()
-                    ->statePath('data')
-                    ->columns(2)
-                    ->inlineLabel($this->hasInlineLabels()),
-            ),
-        ];
+        return $schema
+            ->statePath('data')
+            ->columns(2)
+            ->inlineLabel($this->hasInlineLabels());
     }
 
     public function getRedirectUrl(): ?string
