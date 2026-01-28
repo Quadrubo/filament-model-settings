@@ -2,14 +2,13 @@
 
 namespace Quadrubo\FilamentModelSettings;
 
-use Filament\Infolists\Components\TextEntry;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\TextColumn;
-use Quadrubo\FilamentModelSettings\Macros\IsModelSetting;
 use Filament\Forms\Components\Field;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Quadrubo\FilamentModelSettings\Commands\MakeModelSettingsPageCommand;
+use Quadrubo\FilamentModelSettings\Macros\IsModelSetting;
 use Quadrubo\FilamentModelSettings\Testing\TestsFilamentModelSettings;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
