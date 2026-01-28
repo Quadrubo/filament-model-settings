@@ -2,6 +2,21 @@
 
 All notable changes to `filament-model-settings` will be documented in this file.
 
+## v2.0.0 - 2026-01-28
+
+> [!WARNING]
+This release drops support for filament v3
+
+### What's Changed
+
+* Added filamentphp v4 support by @tiran133 in https://github.com/Quadrubo/filament-model-settings/pull/22
+
+### New Contributors
+
+* @tiran133 made their first contribution in https://github.com/Quadrubo/filament-model-settings/pull/22
+
+**Full Changelog**: https://github.com/Quadrubo/filament-model-settings/compare/v1.5.0...v2.0.0
+
 ## v1.5.0 - 2025-04-17
 
 ### What's Changed
